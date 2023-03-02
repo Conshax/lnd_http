@@ -29,6 +29,9 @@ pub enum Error {
 
     #[error("Lnd Error: {0}")]
     LndError(String),
+
+    #[error("Hex Error: {0}")]
+    HexError(#[from] hex::FromHexError),
 }
 
 pub struct Client {
@@ -98,6 +101,11 @@ impl Client {
             Err(Error::HttpResponseError(resp))
         }
     }
+}
+
+pub fn hex_to_base64(hex_str: &str) -> Result<String> {
+    let bytes = hex::decode(hex_str)?;
+    Ok(base64::engine::general_purpose::STANDARD.encode(bytes.as_slice()))
 }
 
 //TODO implement missing https://github.com/lightningnetwork/lnd/blob/d44823f6e8580d2fa5f193a5382be351610f7c2b/lnrpc/lightning.proto#L769
