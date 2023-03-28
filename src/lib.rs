@@ -138,11 +138,11 @@ fn slice_to_b64(slice: &[u8]) -> String {
 
 #[derive(Serialize, Deserialize)]
 pub struct AddInvoiceRequestBody {
-    memo: Option<String>,
+    pub memo: Option<String>,
 
-    value_msat: u64,
+    pub value_msat: u64,
 
-    expiry: Option<u64>,
+    pub expiry: Option<u64>,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
