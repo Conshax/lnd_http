@@ -147,9 +147,9 @@ pub struct AddInvoiceRequestBody {
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct AddInvoiceResponseBody {
-    r_hash: String,
+    pub r_hash: String,
 
-    payment_request: String,
+    pub payment_request: String,
 }
 
 //TODO implement missing https://github.com/lightningnetwork/lnd/blob/d44823f6e8580d2fa5f193a5382be351610f7c2b/lnrpc/lightning.proto#L769
